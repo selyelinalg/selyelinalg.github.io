@@ -9,7 +9,7 @@
 <html lang="hu-HU">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lineáris Algebra - Tengely Szabolcs (2019)</title>
+<title>Sajátértékek és sajátvektorok</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <script type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script type="text/x-mathjax-config">
@@ -82,26 +82,64 @@ MathJax.Hub.Config({
 </div></div>
 <nav id="primary-navbar" class="navbar" style=""><div class="container">
 <div class="navbar-top-buttons">
-<button class="sidebar-left-toggle-button button active">Tartalom</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><span id="previousbutton" class="previous-button button toolbar-item disabled">El.</span><span id="upbutton" class="up-button button disabled toolbar-item">Fel</span><a id="nextbutton" class="next-button button toolbar-item" href="cha_intro.html" title="Következő" alt="Következő">Köv.</a></span></div>
+<button class="sidebar-left-toggle-button button active">Tartalom</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="cha_intro.html" title="Előző" alt="Előző">El.</a><a id="upbutton" class="up-button button toolbar-item" href="index.html" title="Fel" alt="Fel">Fel</a><a id="nextbutton" class="next-button button toolbar-item" href="cha_leastsquare.html" title="Következő" alt="Következő">Köv.</a></span></div>
 <button class="sidebar-right-toggle-button button active">Magyarázatok</button>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
-<button class="sidebar-left-toggle-button button toolbar-item active">Tartalom</button><span class="previous-button button toolbar-item disabled">El.</span><span class="up-button button disabled toolbar-item">Fel</span><a class="next-button button toolbar-item" href="cha_intro.html" title="Következő" alt="Következő">Köv.</a>
+<button class="sidebar-left-toggle-button button toolbar-item active">Tartalom</button><a class="previous-button toolbar-item button" href="cha_intro.html" title="Előző" alt="Előző">El.</a><a class="up-button button toolbar-item" href="index.html" title="Fel" alt="Fel">Fel</a><a class="next-button button toolbar-item" href="cha_leastsquare.html" title="Következő" alt="Következő">Köv.</a>
 </div>
 </div></nav></header><div class="page">
 <aside id="sidebar-left" class="sidebar"><div class="sidebar-content">
 <nav id="toc"><h2 class="link"><a href="cha_intro.html" data-scroll="cha_intro"><span class="codenumber">1</span><span class="title">Lineáris egyenletek, egyenletrendszerek</span></a></h2>
-<h2 class="link"><a href="cha_se_sv.html" data-scroll="cha_se_sv"><span class="codenumber">2</span><span class="title">Sajátértékek és sajátvektorok</span></a></h2>
+<h2 class="link active"><a href="cha_se_sv.html" data-scroll="cha_se_sv"><span class="codenumber">2</span><span class="title">Sajátértékek és sajátvektorok</span></a></h2>
 <h2 class="link"><a href="cha_leastsquare.html" data-scroll="cha_leastsquare"><span class="codenumber">3</span><span class="title">Legkisebb négyzetek módszere</span></a></h2>
 <h2 class="link"><a href="cha_feladatok.html" data-scroll="cha_feladatok"><span class="codenumber">4</span><span class="title">Feladatok</span></a></h2>
 <h2 class="link"><a href="cha_beadando.html" data-scroll="cha_beadando"><span class="codenumber">5</span><span class="title">Beadandó feladatok</span></a></h2></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
-</div></aside><main class="main"><div id="content" class="mathbook-content"><section class="book" id="index"><nav class="summary-links"><ul>
-<li><a href="cha_intro.html"><span class="codenumber">1</span><span class="title">Lineáris egyenletek, egyenletrendszerek</span></a></li>
-<li><a href="cha_se_sv.html"><span class="codenumber">2</span><span class="title">Sajátértékek és sajátvektorok</span></a></li>
-<li><a href="cha_leastsquare.html"><span class="codenumber">3</span><span class="title">Legkisebb négyzetek módszere</span></a></li>
-<li><a href="cha_feladatok.html"><span class="codenumber">4</span><span class="title">Feladatok</span></a></li>
-<li><a href="cha_beadando.html"><span class="codenumber">5</span><span class="title">Beadandó feladatok</span></a></li>
-</ul></nav></section></div></main>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section class="chapter" id="cha_se_sv"><h1 class="heading" alt="Fejezet 2 Sajátértékek és sajátvektorok">
+<span class="type">Fejezet</span><span class="codenumber">2</span><span class="title">Sajátértékek és sajátvektorok</span>
+</h1>
+<a href="cha_se_sv.html" class="permalink">¶</a><section class="introduction" id="introduction-2"><p id="p-2"><div class="sagecell-sage" id="sage-12"><script type="text/x-sage">pretty_print(html(r'Adott $3\times 3$-as mátrix $n$-edik hatványának meghatározása'))
+@interact
+def _(A=input_grid(3,3, default = [1,2,1,6,-1,0,-1,-2,-1], label='Az A mátrix', to_value=matrix)):
+    pretty_print(html('Az $A$ mátrix: $%s$'%latex(A)))
+    A=A.apply_map(SR)
+    D,P=A.eigenmatrix_right()
+    pretty_print(html('Az $A$ mátrix sajátértékei: $%s$, $%s$  és $%s$'%(latex(D[0,0]),latex(D[1,1]),latex(D[2,2]))))
+    pretty_print(html('sajátérték: $%s$, hozzá tartozó sajátvektor: $%s$'%(latex(D[0,0]),latex(P.column(0)))))
+    pretty_print(html('sajátérték: $%s$, hozzá tartozó sajátvektor: $%s$'%(latex(D[1,1]),latex(P.column(1)))))
+    pretty_print(html('sajátérték: $%s$, hozzá tartozó sajátvektor: $%s$'%(latex(D[2,2]),latex(P.column(2)))))
+    pretty_print(html('A sajátvektorokból álló $P$ mátrix: $%s$'%latex(P)))
+    pretty_print(html('$P$ inverze: $%s$'%latex(P.inverse())))
+    pretty_print(html('Ekkor a $P^{-1}AP$ mátrix diagonális: $%s$'%latex((P^-1*A*P).factor())))
+    pretty_print(html('Innen $A^n$ zárt alakja könnyen meghatározható: $A^n=PD^nP^{-1}$'))
+    n=var('n')
+    An=P*matrix(SR,[[D[0,0]^n,0,0],[0,D[1,1]^n,0],[0,0,D[2,2]^n]])*P.inverse()
+    pretty_print(html('Az $A$ mátrix $n$-edik hatványa:$%s$'%latex(An.factor())))
+</script></div> <div class="sagecell-sage" id="sage-13"><script type="text/x-sage">pretty_print(html('Rekurzív sorozat zárt alakjának meghatározása'))
+pretty_print(html('Adott az $u_n=au_{n-1}+bu_{n-2}+cu_{n-3}$ rekurzív sorozat'))
+pretty_print(html('$u_0,u_1,u_2$ kezdőértékekkel.'))
+@interact
+def _(u0=('u0',3),u1=('u1',0),u2=('u2',14),a=('a',0),b=('b',7),c=('c',6)):
+    pretty_print(html('Meghatározzuk a sorozat zárt alakját lineáris algebrai módszerekkel.'))
+    A=matrix(SR, [[a,b,c],[1,0,0],[0,1,0]])
+    pretty_print(html('A rekurzióhoz tartozó $A$ mátrix: $%s$'%latex(A)))
+    M=vector(SR,3,[u2,u1,u0])
+    D,P=A.eigenmatrix_right()
+    pretty_print(html('Az $A$ mátrix sajátértékei: $%s,%s$ és $%s$'%(latex(D[0,0]),latex(D[1,1]),latex(D[2,2]))))
+    pretty_print(html('sajátérték: $%s$, hozzá tartozó sajátvektor: $%s$'%(latex(D[0,0]),latex(P.column(0)))))
+    pretty_print(html('sajátérték: $%s$, hozzá tartozó sajátvektor: $%s$'%(latex(D[1,1]),latex(P.column(1)))))
+    pretty_print(html('sajátérték: $%s$, hozzá tartozó sajátvektor: $%s$'%(latex(D[2,2]),latex(P.column(2)))))
+    pretty_print(html('A sajátvektorokból álló $P$ mátrix: $%s$'%latex(P)))
+    pretty_print(html('$P$ inverze: $%s$'%latex(P.inverse())))
+    pretty_print(html('Ekkor a $P^{-1}AP$ mátrix diagonális: $%s$'%latex((P^-1*A*P).factor())))
+    pretty_print(html('Innen $A^n$ zárt alakja könnyen meghatározható: $A^n=PD^nP^{-1}$'))
+    n=var('n')
+    An=P*matrix(SR,[[D[0,0]^n,0,0],[0,D[1,1]^n,0],[0,0,D[2,2]^n]])*P.inverse()
+    pretty_print(html('Az $A$ mátrix $n$-edik hatványa:$%s$'%latex(An.factor())))
+    pretty_print(html(r'Az $A^n\left(\begin{array}{c}u_2\\u_1\\u_0\end{array}\right)=\left(\begin{array}{c}u_{n+2}\\u_{n+1}\\u_n\end{array}\right)$ összefüggés alapján adódik a formula az $u_n$ sorozatra:'))
+    T=expand(An*M).simplify()
+    pretty_print(html('$u_n=%s$'%latex(T[2].simplify_full())))
+</script></div></p></section></section></div></main>
 </div>
 </body>
 </html>
